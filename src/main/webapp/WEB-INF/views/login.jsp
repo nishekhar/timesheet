@@ -4,12 +4,12 @@
 		<title>login page</title>
 	</head>
 	<body>
-		<form>
+		<form action="/login" method="post">
   			User name:<br>
-  			<input type="text" name="Username"><br>
+  			<input type="text" name="userName"><br>
   			pass word:<br>
-  			<input type="text" name="password"><br>
-			<input type="button" onclick="login" value="Login!">
+  			<input type="password" name="password"><br>
+			<input type="submit" value="Login!">
 		</form>
 	
 	</body>
