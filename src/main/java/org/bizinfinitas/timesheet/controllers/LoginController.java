@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 public class LoginController {
 
@@ -26,9 +28,10 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String postForm(UserLogin userLogin, Model model) {
+    public String postForm(UserLogin loginTrial, Model model, HttpServletRequest request) {
+        UserLogin loggedInUser;
         try {
-            loginService.login(userLogin);
+            loggedInUser = loginService.login(loginTrial);
         } catch (UserNotFoundException e) {
             model.addAttribute("message", "No such user");
             return "login";
@@ -36,6 +39,7 @@ public class LoginController {
             model.addAttribute("message", "Password mismatched");
             return "login";
         }
-        return "home";
+        request.getSession().setAttribute("loggedUser", loggedInUser);
+        return "redirect:timesheet";
     }
 }

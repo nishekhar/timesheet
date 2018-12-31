@@ -1,0 +1,15 @@
+body {
+        background-color: aqua;
+        padding: 10px;
+        margin: 15px
+     }
+
+div  {
+        width: 20%;
+        padding: 16px;
+        border: 2px solid darkblue;
+        border-radius: 20px;
+        margin: auto;
+        background-color: bisque;
+        color: crimson;
+     }
